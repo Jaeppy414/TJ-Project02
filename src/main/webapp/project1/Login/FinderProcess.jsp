@@ -22,9 +22,9 @@ String mid = dao.findId(name, email);
 	%>
 	<div class="container">
 		<div class="success">
-			<h3>회원님의 아이디는</h3>
+			
 			<div><%=mid %></div>
-			<h3>입니다.</h3>
+			
 		</div>
 		<div>
 			<input type="button" value="로그인" onclick="location.href='./LoginForm.jsp'"/>

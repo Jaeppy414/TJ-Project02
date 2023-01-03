@@ -23,9 +23,9 @@ String mpw = dao.findPw(id, name, email);
 	%>
 	<div class="container">
 		<div class="success">
-			<h3>회원님의 비밀번호는</h3>
+			
 			<div><%=mpw %></div>
-			<h3>입니다.</h3>
+			
 		</div>
 		<div>
 			<input type="button" value="로그인" onclick="location.href='./LoginForm.jsp'"/>

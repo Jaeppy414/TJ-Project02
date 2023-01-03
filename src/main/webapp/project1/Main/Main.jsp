@@ -8,7 +8,36 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">  
+  <script src="<https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js>"></script>
+<script type="text/javascript">
+
+ function popUp(){
     
+      window.open("popup.jsp", "tap", "width=400,height=450,resizable,status=1")
+   
+}
+  function closePopup(){
+      if(document.getElementById("check").value){
+        Cookies.set('popupCheck', 'no', { expires: 24 });
+      }
+      //자기 자신을 닫는 dom method
+      self.close();
+    }
+  function screenCenterPop(){
+	    /* 
+	    screen객체를 통해 사용하는 모니터의 현재 해상도를 구해올 수 있다. 해상도와 팝업창의 
+	    크기를 이용해서 본인의 모니터에서 가운데 위치를 지정하여 팝업창을 열 수 있다.
+	     */
+	    var s_width = window.screen.width;
+	    var s_height = window.screen.height;
+	    /* 
+	    팝업창의 크기가 300px이므로 좌측상탄에서 150px이동해야 화면의 정중앙에 팝업창을 위치시킬 수 있다.
+	    */
+	    var leftVar = s_width/2 - 300/2;
+	    var topVar = s_height/2 - 300/2;
+	    window.open("popup.jsp", "popup", "width=300,height=300,left="+ leftVar +",top="+ topVar);
+	}
+</script>
 <style type="text/css">
 * {
   box-sizing: border-box;
@@ -25,7 +54,7 @@
 }
 </style>
 </head>
-<body>
+<body onload="javascript:popUp()">
 
 <div class="container-fluid">
 <!-- TOP 부분 -->
@@ -181,6 +210,9 @@
 				</div>
 			</div>
 		</div>
+		 <p>
+        <button onclick="screenCenterPop();" style="color: white; background-color: white;">팝업 띄우기</button>
+    	</p>
 <!-- 카피라이트 -->
 	<%@ include file="./inc/bottom.jsp"%>
 </div>

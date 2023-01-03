@@ -27,6 +27,6 @@ else{
 	//로그인에 실패하면 리퀘스트 영역에 에러메시지 저장
 	request.setAttribute("LoginErrMsg", "로그인 오류입니다.");
 	//그리고 로그인 페이지로 돌아간다.
-	request.getRequestDispatcher("LoginForm2.jsp").forward(request, response);
+	request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
 }
 %>

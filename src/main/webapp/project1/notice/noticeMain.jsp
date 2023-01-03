@@ -10,7 +10,6 @@ BoardDAO dao = new BoardDAO(application);
 
 Map<String, Object> param = new HashMap<String, Object>();
 
-
 String searchField = request.getParameter("searchField");
 String searchWord = request.getParameter("searchWord");
 
@@ -23,16 +22,14 @@ if (searchWord != null) {
 int totalCount = dao.selectCount(param);
 
 /**페이징 코드 추가부분 s***********************/
-int pageSize = 
-	Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
-int blockPage = 
-	Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
+int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
+int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
 
-int totalPage = (int)Math.ceil((double)totalCount / pageSize);
+int totalPage = (int) Math.ceil((double) totalCount / pageSize);
 
 int pageNum = 1;
 String pageTemp = request.getParameter("pageNum");
-if(pageTemp != null && !pageTemp.equals(""))
+if (pageTemp != null && !pageTemp.equals(""))
 	pageNum = Integer.parseInt(pageTemp);
 
 int start = (pageNum - 1) * pageSize;
@@ -131,19 +128,18 @@ dao.close();
 										<td colspan="5" align="center">등록된 게시물이 없습니다^^*</td>
 									</tr>
 									<%
-									} 
-									else {
-										int virtualNum = 0;
-										
-										for (BoardDTO dto : boardLists) {
-											virtualNum = totalCount--;
+									} else {
+									int virtualNum = 0;
+
+									for (BoardDTO dto : boardLists) {
+										virtualNum = totalCount--;
 									%>
 									<tr align="center">
 										<!-- 게시물의 가상번호 -->
 										<td><%=virtualNum%></td>
 										<!-- 제목 -->
-										<td align="left">
-											<a href="../board/View.jsp?num=<%=dto.getNum()%>"> <%=dto.getTitle()%></a>
+										<td align="left"><a
+											href="../board/View.jsp?num=<%=dto.getNum()%>"> <%=dto.getTitle()%></a>
 										</td>
 										<!-- 작성자 아이디 -->
 										<td align="center"><%=dto.getId()%></td>
@@ -151,28 +147,67 @@ dao.close();
 										<td align="center"><%=dto.getPostdate()%></td>
 									</tr>
 									<%
-										}
+									}
 									}
 									%>
 								</table>
-									<tr align="right">
-										<td>
-											<button type="button" onclick="location.href='../Main/Main.jsp'">홈으로</button>
-										<%
-											if ((session.getAttribute("UserId")!=null&&session.getAttribute("UserId").equals("admin"))){
-										%>
-											<button type="button" onclick="location.href='../board/Write.jsp';">글쓰기</button>
-										<%
-										}
-										%>
-										</td>
-									</tr>
+								<tr align="right">
+									<td>
+										<button type="button"
+											onclick="location.href='../Main/Main.jsp'">홈으로</button> <%
+ if ((session.getAttribute("UserId") != null && session.getAttribute("UserId").equals("admin"))) {
+ %>
+										<button type="button"
+											onclick="location.href='../board/Write.jsp';">글쓰기</button> <%
+ }
+ %>
+									</td>
+								</tr>
+
+								<h1 align="center">자주 묻는 질문</h1>
+								<div id="accordion">
+									<div class="card">
+										<div class="card-header">
+											<a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+												뭐가 이렇게 안돼</a>
+										</div>
+										<div id="collapseOne" class="collapse show"
+											data-bs-parent="#accordion">
+											<div class="card-body">ㅋ</div>
+										</div>
+									</div>
+
+									<div class="card">
+										<div class="card-header">
+											<a class="collapsed btn" data-bs-toggle="collapse"
+												href="#collapseTwo"> 질문2 </a>
+										</div>
+										<div id="collapseTwo" class="collapse"
+											data-bs-parent="#accordion">
+											<div class="card-body">답변2</div>
+										</div>
+									</div>
+
+									<div class="card">
+										<div class="card-header">
+											<a class="collapsed btn" data-bs-toggle="collapse"
+												href="#collapseThree"> 질문3 </a>
+										</div>
+										<div id="collapseThree" class="collapse"
+											data-bs-parent="#accordion">
+											<div class="card-body">답변3</div>
+										</div>
+									</div>
+
+								</div>
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
 	</div>
 	<%@ include file="../Main/inc/bottom.jsp"%>
 </body>

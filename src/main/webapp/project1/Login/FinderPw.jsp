@@ -34,7 +34,7 @@ function pwFind(){
 	<div class="container p-5 my-4 border" align="center" style="width: 450px;">
 		<form name="myForm" method="post" action="FinderProcess.jsp" >
 			<div class="container mt-3">
-			  <ul class="nav justify-content-center nav-tabs">
+			  <ul class="nav justify-content-center">
 			    <li class="nav-item">
 			      <a class="nav-link active" href="./FinderId.jsp" name="id" >아이디 찾기</a>
 			    </li>

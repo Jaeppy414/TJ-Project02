@@ -5,6 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../common/jquery/jquery-3.6.1.min.js"></script>
+    
 <script type="text/javascript">
 function validateForm(form) {
 	if(form.name.value==""){
@@ -47,7 +51,7 @@ function inputEmail(frm){
 	<div class="container p-5 my-4 border" align="center" style="width: 450px;">
 		<form name="myForm" method="post" onsubmit="return validateForm(this);">
 			<div class="container mt-3">
-			  <ul class="nav justify-content-center nav-tabs">
+			  <ul class="nav justify-content-center">
 			    <li class="nav-item">
 			      <a class="nav-link active" href="./FinderId.jsp" name="id">아이디 찾기</a>
 			    </li>
@@ -74,5 +78,6 @@ function inputEmail(frm){
 			</table>
 		</form>
 	</div>
+	<%@ include file="../Main/inc/bottom.jsp"%>
 </body>
 </html>
